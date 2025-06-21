@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戴雋懿 | 个人网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 亮色主题样式 */
+        :root {
+            --primary: #4a6bff;
+            --secondary: #3a86ff;
+            --accent: #ff6b6b;
+            --light: #ffffff;
+            --light-bg: #f8f9fa;
+            --light-border: #e0e0e0;
+            --text: #333333;
+            --text-light: #666666;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --police-blue: #0047AB;
+            --police-gold: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f2f5, #e6e9ef, #f0f2f5);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* 动态背景样式 - 亮色版 */
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(74, 107, 255, 0.08);
+            animation: float 15s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(74, 107, 255, 0.1);
+        }
+        
+        .bubble:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            animation-duration: 20s;
+            background: linear-gradient(45deg, rgba(74, 107, 255, 0.1), rgba(58, 134, 255, 0.1));
+        }
+        
+        .bubble:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            left: 80%;
+            animation-duration: 15s;
+            animation-delay: 2s;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(74, 107, 255, 0.1));
+        }
+        
+        .bubble:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 70%;
+            animation-duration: 25s;
+            animation-delay: 4s;
+            background: linear-gradient(45deg, rgba(58, 134, 255, 0.1), rgba(255, 107, 107, 0.1));
+        }
+        
+        .bubble:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 20%;
+            animation-duration: 18s;
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 85%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                border-radius: 50%;
+            }
+            25% {
+                transform: translateY(-50px) translateX(20px) rotate(90deg);
+                border-radius: 60% 40% 70% 30%;
+            }
+            50% {
+                transform: translateY(-100px) translateX(-30px) rotate(180deg);
+                border-radius: 40% 60% 30% 70%;
+            }
+            75% {
+                transform: translateY(-50px) translateX(40px) rotate(270deg);
+                border-radius: 50% 50% 60% 40%;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+                border-radius: 50%;
+            }
+        }
+        
+        /* 头部样式 */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            overflow: hidden;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffffff, #f0f5ff);
+            border-bottom: 1px solid var(--light-border);
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            animation: fadeInDown 1s ease-in-out;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: linear-gradient(45deg, var(--police-blue), #1a1a2e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-in-out 0.3s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .typed-text {
+            display: inline-block;
+            border-right: 2px solid var(--primary);
+            animation: blink 0.7s infinite;
+            padding-right: 5px;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--light-border);
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 1.2rem;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+        
+        nav a i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--police-blue), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::before {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: var(--police-blue);
+        }
+        
+        /* 内容区域样式 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        section {
+            margin-bottom: 2.5rem;
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--light-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--police-blue), var(--secondary));
+        }
+        
+        h2 {
+            color: var(--text);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--light-border);
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.8rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        h3 i {
+            margin-right: 10px;
+            color: var(--police-blue);
+            font-size: 1.2rem;
+        }
+        
+        /* 个人照片样式 */
+        .profile-photo {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .profile-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(74, 107, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-photo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 71, 171, 0.3);
+            border-color: rgba(0, 71, 171, 0.3);
+        }
+        
+        .profile-photo::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 2px solid var(--police-blue);
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            70% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* 列表样式 */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        /* 资历部分样式 */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .experience-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--police-blue);
+            background: rgba(0, 71, 171, 0.05);
+        }
+        
+        .experience-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            display: inline-block;
+        }
+        
+        .experience-card h3 {
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .experience-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        .experience-card .org-type {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--police-blue), var(--accent));
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* 奖项部分样式 */
+        .awards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .award-item {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .award-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--police-blue), var(--accent));
+        }
+        
+        .award-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+            background: rgba(0, 71, 171, 0.05);
+        }
+        
+        .award-item i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            display: inline-block;
+        }
+        
+        .award-item h4 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin: 0 0 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .award-item p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        /* 证书图片样式 */
+        .certificate-images {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .certificate-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--light-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-image:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certificate-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Lightbox 模态框样式 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            width: 800px;
+        }
+        
+        .lightbox-content iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+        
+        .close-lightbox:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        /* 个人作品区域 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .portfolio-item {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-border);
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--police-blue);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--police-blue);
+            font-size: 28px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-play-btn:hover {
+            background: var(--police-blue);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .portfolio-content h3 {
+            margin-top: 0;
+            color: var(--police-blue);
+            font-size: 1.4rem;
+        }
+        
+        .portfolio-content p {
+            color: var(--text-light);
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .portfolio-tag {
+            background: rgba(0, 71, 171, 0.1);
+            color: var(--police-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* 未来目标区域 - 全新设计 */
+        .goals-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .goal-card {
+            flex: 1;
+            min-width: 300px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--police-blue);
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+            background: rgba(0, 71, 171, 0.03);
+        }
+        
+        .goal-card i {
+            font-size: 2.5rem;
+            color: var(--police-blue);
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+        
+        .goal-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--police-blue);
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .goal-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .goal-timeline {
+            display: flex;
+            align-items: center;
+            color: var(--police-blue);
+            font-weight: 500;
+            margin-top: 15px;
+            background: rgba(0, 71, 171, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .goal-timeline i {
+            font-size: 1rem;
+            margin-right: 8px;
+            margin-bottom: 0;
+        }
+        
+        .goal-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--police-blue);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .goal-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        
+        .goal-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .goal-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--police-blue);
+            font-weight: bold;
+        }
+        
+        /* 警徽元素 */
+        .police-badge {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .badge-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--police-blue), #1a1a2e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--police-gold);
+            font-size: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--police-gold);
+        }
+        
+        /* 警校校训 */
+        .school-motto {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--police-blue);
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 71, 171, 0.05);
+            border-left: 4px solid var(--police-gold);
+            border-right: 4px solid var(--police-gold);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, #f5f7ff);
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--light-border);
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 71, 171, 0.1);
+            color: var(--police-blue);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(45deg, var(--police-blue), var(--accent));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 71, 171, 0.3);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            header p {
+                font-size: 1.3rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+            
+            .lightbox-content {
+                width: 90%;
+            }
+            
+            .lightbox-content iframe {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 1rem 3rem;
+            }
+            
+            header h1 {
+                font-size: 2.3rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 0.95rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .profile-photo img {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .profile-photo::after {
+                width: 190px;
+                height: 190px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .portfolio-grid, .goals-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .lightbox-content iframe {
+                height: 300px;
+            }
+            
+            .school-motto {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            nav a {
+                flex: 1 1 45%;
+                margin: 0.3rem;
+                text-align: center;
+                padding: 0.6rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            nav a i {
+                display: block;
+                margin: 0 auto 5px;
+                font-size: 1.1rem;
+            }
+            
+            .experience-grid, .awards {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .certificate-images {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .lightbox-content iframe {
+                height: 250px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 动态背景 -->
+    <div class="header-background" id="dynamicBackground"></div>
+    
+    <!-- Lightbox 模态框 -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+    
+    <!-- 头部区域 -->
+    <header>
+        <div class="header-content">
+            <div class="profile-photo">
+                <img src="images/V21wT01rMHpUWHBOZUUxNlJYcE9hazE2VFhwamVrMUVUWGROZWxVOVRucE5lazFVVFhoTmVsbDZUWHBOTTAxNlFYcE5SRTB4VGpKTk0wNVVQVE13.jpg" alt="戴雋懿的个人照片">
+            </div>
+            <h1>戴雋懿</h1>
+            <p><span class="typed-text">守護澳門，服務社群</span></p>
+        </div>
+    </header>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#about"><i class="fas fa-user"></i> 個人介紹</a>
+        <a href="#experience"><i class="fas fa-briefcase"></i> 資歷</a>
+        <a href="#skills"><i class="fas fa-laptop-code"></i> 技能專長</a>
+        <a href="#portfolio"><i class="fas fa-paint-brush"></i> 個人作品</a>
+        <a href="#awards"><i class="fas fa-trophy"></i> 證書與獎項</a>
+        <a href="#goals"><i class="fas fa-bullseye"></i> 未來目標</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> 聯絡我</a>
+    </nav>
+    
+    <!-- 主要内容区 -->
+    <div class="container">
+        <!-- 个人介绍 -->
+        <section id="about">
+            <h2><i class="fas fa-user"></i> 個人資料</h2>
+            <p>您好！我是戴雋懿，目前就讀於聖若瑟教區中學第五校高中五年級。我熱愛學習新知識，積極拓展視野，努力在學術和課外活動中追求卓越。</p>
+            
+            <h3><i class="fas fa-info-circle"></i> 基本資料</h3>
+            <ul>
+                <li><strong>姓名：</strong>戴雋懿</li>
+                <li><strong>年齡：</strong>17歲</li>
+                <li><strong>學歷：</strong>高中五年級（F5）理科生</li>
+                <li><strong>就讀學校：</strong>聖若瑟教區中學第五校</li>
+            </ul>
+        </section>
+        
+        <!-- 资历部分 -->
+        <section id="experience">
+            <h2><i class="fas fa-briefcase"></i> 資歷</h2>
+            <p>我積極參與校內外各類活動與組織，在服務中學習，在實踐中成長。以下是我參與的主要組織與活動：</p>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>校內義工隊</h3>
+                    <p>作為校內義工隊成員，我積極參與各類活動的籌備與支援工作，培養團隊合作精神和奉獻意識。</p>
+                    <span class="org-type">校內組織</span>
+                </div>
+                
+                <div class="experience-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>領袖生</h3>
+                    <p>擔任學校領袖生，協助老師維護校園秩序，組織學生活動，培養領導能力和責任感。</p>
+                    <span class="org-type">校內組織</span>
+                </div>
+                
+                <div class="experience-card">
+                    <i class="fas fa-book"></i>
+                    <h3>圖書館義工</h3>
+                    <p>作為圖書館義工，協助圖書管理、分類和借閱服務，培養細心、耐心的品質。</p>
+                    <span class="org-type">校內組織</span>
+                </div>
+                
+                <div class="experience-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>滅罪小先鋒</h3>
+                    <p>加入校外滅罪小先鋒組織，參與社區安全宣傳活動，增強社會責任感和公民意識。</p>
+                    <span class="org-type">校外組織</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 技能专长 -->
+        <section id="skills">
+            <h2><i class="fas fa-laptop-code"></i> 技能與專長</h2>
+            <ul>
+                <li><strong>文書處理：</strong>精通 Microsoft Word、Excel、PowerPoint 等辦公軟件</li>
+                <li><strong>程式設計：</strong>具備基礎 Python 程式設計能力，能開發簡單應用程式</li>
+                <li><strong>圖像設計：</strong>熟悉 Photoshop、Canva 等圖像設計工具</li>
+                <li><strong>團隊合作：</strong>擁有良好的團隊合作與溝通能力</li>
+                <li><strong>活動組織：</strong>具備活動策劃與組織能力，成功組織多次校內活動</li>
+                <li><strong>法律知識：</strong>熟悉《基本法》《刑法總論》等法律框架</li>
+                <li><strong>犯罪分析：</strong>運用Excel分析犯罪數據，建立熱力圖模型</li>
+            </ul>
+        </section>
+        
+        <!-- 个人作品 -->
+        <section id="portfolio">
+            <h2><i class="fas fa-paint-brush"></i> 個人作品</h2>
+            <p>以下是我在學習和課外活動中創作的部分作品，展示了我的創意和技術能力。</p>
+            
+            <div class="portfolio-grid">
+                <!-- Useless Box 專案 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" onclick="openVideo('8r4EwHHaITk')">
+                        <img src="https://img.youtube.com/vi/8r4EwHHaITk/maxresdefault.jpg" alt="Useless Box專案">
+                        <div class="portfolio-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Useless Box 專案</h3>
+                        <p>與同學合作製作的創意裝置，展現了我們的工程設計能力和創造性思維。這個看似無用的盒子實際上展示了機械開關的巧妙應用。</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">電子工程</span>
+                            <span class="portfolio-tag">創意設計</span>
+                            <span class="portfolio-tag">團隊合作</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 澳門四大產業影片 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" onclick="openVideo('yzW-pVeDNFI')">
+                        <img src="https://img.youtube.com/vi/yzW-pVeDNFI/maxresdefault.jpg" alt="澳門四大產業影片">
+                        <div class="portfolio-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>澳門四大產業影片</h3>
+                        <p>與同學合作拍攝的紀錄片，探討澳門的四大產業。</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">影片製作</span>
+                            <span class="portfolio-tag">社會研究</span>
+                            <span class="portfolio-tag">澳門經濟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 证书与奖项展示 -->
+        <section id="awards">
+            <h2><i class="fas fa-trophy"></i> 證書與獎項</h2>
+            <div class="awards">
+                <div class="award-item">
+                    <i class="fas fa-medal"></i>
+                    <h4>國際兒童及青少年中國歷史大賽</h4>
+                    <p>2025年 - 特金獎</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-star"></i>
+                    <h4>國際兒童及青少年天文大賽</h4>
+                    <p>2025年 - 特金獎</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-crown"></i>
+                    <h4>亞洲數學精英年賽</h4>
+                    <p>24/25 學年 - 優異獎</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-award"></i>
+                    <h4>文史地常識問答比賽</h4>
+                    <p>第四屆 - 亞軍</p>
+                    <!-- 文史地常識問答比賽照片 -->
+                    <div class="certificate-images" style="margin-top: 20px;">
+                        <div class="certificate-image" onclick="openLightbox('https://github.com/KiIlerKing/F5B-IT/blob/main/WechatIMG181.jpg?raw=true')">
+                            <img src="images/WechatIMG181.jpg" alt="文史地常識問答比賽獎狀">
+                        </div>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-certificate"></i>
+                    <h4>微軟辦公室專業認證 (MOS)</h4>
+                    <p>Excel Expert 及 Word 認證</p>
+                    <!-- 微軟認證的兩張照片 -->
+                    <div class="certificate-images">
+                        <div class="certificate-image" onclick="openLightbox('https://github.com/KiIlerKing/F5B-IT/blob/main/%E6%88%AA%E5%B1%8F2025-06-21%2021.25.51.jpg?raw=true')">
+                            <img src="images/截屏2025-06-21 21.25.51.jpg" alt="Excel Expert 認證">
+                        </div>
+                        <div class="certificate-image" onclick="openLightbox('https://github.com/KiIlerKing/F5B-IT/blob/main/%E6%88%AA%E5%B1%8F2025-06-21%2021.26.19.jpg?raw=true')">
+                            <img src="images/截屏2025-06-21 21.26.19.jpg" alt="Word 認證">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 未来目标 - 基于自荐信内容更新 -->
+        <section id="goals">
+            <h2><i class="fas fa-bullseye"></i> 未來目標：警官培訓與警務事業</h2>
+            <p>基於對警務工作的熱情與使命感，我制定了清晰的職業發展規劃：</p>
+            
+            <div class="police-badge">
+                <div class="badge-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+            
+            <div class="school-motto">
+                "忠誠勇敢，專業高效" - 澳門保安部隊高等學校校訓
+            </div>
+            
+            <div class="goals-container">
+                <!-- 短期目标 -->
+                <div class="goal-card">
+                    <div class="goal-badge">短期</div>
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>成功入讀警官培訓課程</h3>
+                    <p>專注於警官培訓課程入學準備，深化相關知識與技能：</p>
+                    <ul class="goal-list">
+                        <li>強化法政知識：精研《基本法》《刑法總論》等法律框架</li>
+                        <li>提升體能素質：通過系統訓練達到警校體能標準</li>
+                        <li>深化犯罪分析能力：運用Excel建立犯罪熱力圖模型</li>
+                        <li>參加警校預備課程：提前適應警校學習模式</li>
+                    </ul>
+                    <div class="goal-timeline">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025-2026學年</span>
+                    </div>
+                </div>
+                
+                <!-- 中期目标 -->
+                <div class="goal-card">
+                    <div class="goal-badge">中期</div>
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>警校專業訓練與發展</h3>
+                    <p>在警校期間全面發展專業能力，成為優秀警務人員：</p>
+                    <ul class="goal-list">
+                        <li>掌握"三位一體"教學模式：學術研習+情境實訓+跨部門實習</li>
+                        <li>專注刑事偵查技術：學習現代犯罪偵查方法與技術</li>
+                        <li>培養危機處理能力：通過談判模擬場訓練應變能力</li>
+                        <li>參與跨部門輪崗：在治安警、消防局等部門積累實戰經驗</li>
+                    </ul>
+                    <div class="goal-timeline">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2026-2028年</span>
+                    </div>
+                </div>
+                
+                <!-- 长期目标 -->
+                <div class="goal-card">
+                    <div class="goal-badge">長期</div>
+                    <i class="fas fa-star"></i>
+                    <h3>專業警務工作與社會貢獻</h3>
+                    <p>成為優秀警官，守護澳門安全，服務社會大眾：</p>
+                    <ul class="goal-list">
+                        <li>社區安全守護者：延續滅罪小先鋒精神，加強社區警民合作</li>
+                        <li>專業犯罪防治：運用數據分析能力優化巡邏路線與警力部署</li>
+                        <li>粵港澳警務合作：參與灣區安全合作，提升區域安保水平</li>
+                        <li>培育新一代警員：分享經驗，傳承警隊優良傳統與專業精神</li>
+                    </ul>
+                    <div class="goal-timeline">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2028年及以後</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; background: rgba(0, 71, 171, 0.05); padding: 20px; border-radius: 10px; border-left: 4px solid var(--police-blue);">
+                <h3><i class="fas fa-bullhorn"></i> 報考動機</h3>
+                <p>自幼目睹治安警察於颱風天冒險疏導交通、節日人潮中徹夜維安的身影，「守護澳門」四字便深植於心。貴校「忠誠勇敢，專業高效」的校訓與我的人生準則高度共鳴，我渴望通過專業訓練，將青春淬煉成守護澳門的盾與劍。</p>
+                <p>我尤其嚮往貴校的「三位一體」教學模式，結合學術研習、情境實訓與跨部門實習，培養全面警務人才。2024年學員李某於反貪工作中獲獎的案例，更印證貴校對職業操守的極致要求，這正是我追求的專業標準。</p>
+            </div>
+        </section>
+        
+        <!-- 联络方式 -->
+        <section id="contact">
+            <h2><i class="fas fa-envelope"></i> 聯絡我</h2>
+            <p>如果您對我的經歷感興趣，或有任何合作機會，歡迎隨時與我聯絡：</p>
+            
+            <ul>
+                <li><strong>電子郵箱：</strong> sundai20081008@gmail.com</li>
+                <li><strong>電話：</strong> +853 66300860</li>
+                <li><strong>地址：</strong> 澳門聖若瑟教區中學第五校</li>
+            </ul>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <p>Copyright © 2025 戴雋懿. 保留所有權利</p>
+        <p>設計與開發：戴雋懿</p>
+    </footer>
+    
+    <script>
+        // 创建动态背景气泡
+        function createBubbles() {
+            const background = document.getElementById('dynamicBackground');
+            const bubbleCount = 12;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // 随机大小和位置
+                const size = Math.random() * 100 + 30;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                
+                // 随机动画延迟
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                
+                background.appendChild(bubble);
+            }
+        }
+        
+        // 滚动时导航栏高亮
+        function highlightNav() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+        
+        // Lightbox功能 - 图片
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightboxContent');
+            
+            lightboxContent.innerHTML = `
+                <img src="${imageSrc}" alt="放大圖片" style="max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
+            `;
+            lightbox.style.display = 'flex';
+        }
+        
+        // Lightbox功能 - 视频
+        function openVideo(videoId) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightboxContent');
+            
+            lightboxContent.innerHTML = `
+                <iframe 
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+            lightbox.style.display = 'flex';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            // 清除视频iframe，停止播放
+            document.getElementById('lightboxContent').innerHTML = '';
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createBubbles();
+            highlightNav();
+            
+            // 为导航链接添加点击事件
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Lightbox关闭事件
+            document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('lightbox')) {
+                    closeLightbox();
+                }
+            });
+            
+            // 打字机效果
+            const typedTextSpan = document.querySelector('.typed-text');
+            const textArray = ['守護澳門，服務社群', '忠誠勇敢，專業高效', '警務事業，人生志向'];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function typeEffect() {
+                const currentText = textArray[textIndex];
+                
+                if (!isDeleting) {
+                    typedTextSpan.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    
+                    if (charIndex === currentText.length) {
+                        isDeleting = true;
+                        setTimeout(typeEffect, 2000);
+                    } else {
+                        setTimeout(typeEffect, 100);
+                    }
+                } else {
+                    typedTextSpan.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % textArray.length;
+                        setTimeout(typeEffect, 500);
+                    } else {
+                        setTimeout(typeEffect, 50);
+                    }
+                }
+            }
+            
+            // 启动打字效果
+            setTimeout(typeEffect, 1000);
+        });
+    </script>
+</body>
+</html>
